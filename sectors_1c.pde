@@ -1,4 +1,4 @@
-//sectors_1a
+//sectors_1c
 
 void sector(float r, float t, float a, float w){  //draww an assload of lines, side by side, really close so they form a secotor of thickness t at distance r from the center starting at angle a and extending for w degrees
   for(float i = 0; i < w; i = i + 0.05){
