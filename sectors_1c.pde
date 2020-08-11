@@ -2,14 +2,16 @@
 
 void sector(float r, float t, float a, float w){  //draww an assload of lines, side by side, really close so they form a secotor of thickness t at distance r from the center starting at angle a and extending for w degrees
   for(float i = 0; i < w; i = i + 0.05){
+    //draw a line at angle a + i from radius r to radius r + t (thickness of the sector)
+    //by sweeping from i=0 to i=w you get a sector with an angular width of w
     line(cos(radians(i + a)) * r, sin(radians(i + a)) * r, cos(radians(i + a)) * (r + t), sin(radians(i + a)) * (r + t));
   }
 }
 
 void ray(float r, float a, float w, int ir, int or){  //takes the parameters from a sector as well as the min and max radius, draws 'rays' at the begining or end of an arc
   if(w > 0){
-    int end = int(random(2)) * int(w);
-    int len = int(random(ir, or)/(ir/3))*(ir/3);
+    int end = int(random(2)) * int(w); //randomly choose the begining or end of the ray
+    int len = int(random(ir, or)/(ir/3))*(ir/3); //pick a lenght for the ray that doesnt extend too far in or out
     line(cos(radians(a + end)) * r, sin(radians(a + end)) * r, cos(radians(a + end)) * (len), sin(radians(a + end)) * (len));
   }
 }
@@ -44,11 +46,11 @@ void run(){
 }
 
 void setup(){
-  size(1024, 1024);
-  colorMode(HSB, 360, 100, 100);
-  noSmooth();
-  ellipseMode(RADIUS);
-  run();
+  size(1024, 1024); //i have a small monitor
+  colorMode(HSB, 360, 100, 100); //i think in the colour wheel model
+  noSmooth(); //i like jaggies
+  ellipseMode(RADIUS); //i am bad at math
+  run(); //dont walk
 }
 
 void mousePressed(){ //left click to run, right click to save
