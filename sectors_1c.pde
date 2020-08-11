@@ -19,7 +19,7 @@ void ray(float r, float a, float w, int ir, int or){  //takes the parameters fro
 void run(){
   background(120, 0, 0);
   
-  int minRadius = width / 64; //max radius for each pattern
+  int minRadius = width / 64; //max radius for each pattern element
   int maxRadius = width / 8; //min radius
   
   float radius; //parameters generated for each individual arc in the pattern
@@ -32,10 +32,10 @@ void run(){
       pushMatrix();
       translate((x * width / 4) + (width / 4), (y * height / 4) + (height / 4));
       for(int i = 0; i < int(random(0, 100)); i++){ //each pattern has 0-100 sectors with random parameters
-        radius = int(random(minRadius, maxRadius)/10)*10;
-        thickness = int(random(minRadius)/(minRadius/3))*(minRadius/3);
-        startAngle = int(random(360) / 60) * 60;
-        widthAngle = int(random(361) / 120) * 120;
+        radius = int(random(minRadius, maxRadius)/10)*10; //the /10 and *10 break up the random numbers in to increments of 10
+        thickness = int(random(minRadius)/(minRadius/3))*(minRadius/3); //make the thickness a multiple of 1/3 the min radius
+        startAngle = int(random(360) / 60) * 60; //sectors start at an angle which is a multiple of 60
+        widthAngle = int(random(361) / 120) * 120; //sectors width's are a multiple of 120
         stroke(0, 0, random(10, 100)); //set a random brightness then draw the sector and ray
         sector(radius, thickness, startAngle, widthAngle);
         ray(radius, startAngle, widthAngle, minRadius, maxRadius);
